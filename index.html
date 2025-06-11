@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Your Name | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Roboto:300,400,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #232946;
+      --secondary: #eebbc3;
+      --accent: #ff8906;
+      --bg: #f4fafd;
+      --surface: #fff;
+      --shadow: 0 4px 24px rgba(35,41,70,0.09);
+      --radius: 16px;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(105deg, #eebbc3 0%, #ff8906 100%);
+      color: var(--primary);
+      padding: 3rem 1rem 6rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      letter-spacing: -1.5px;
+      animation: fadeInDown 1s cubic-bezier(.4,0,.2,1);
+    }
+    header p {
+      color: #232946cc;
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+      animation: fadeInUp 1.3s cubic-bezier(.4,0,.2,1);
+    }
+    .socials {
+      margin-top: 1.2rem;
+      animation: fadeIn 2s;
+    }
+    .socials a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: var(--primary);
+      background: var(--accent);
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px #0001;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+      text-align: center;
+      vertical-align: middle;
+    }
+    .socials a:hover {
+      background: var(--primary);
+      color: var(--accent);
+      transform: scale(1.08) translateY(-2px);
+    }
+    .wave {
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      width: 100%; height: 80px;
+      z-index: 1;
+    }
+    main {
+      max-width: 1140px;
+      margin: -5rem auto 0 auto;
+      padding: 0 1.5rem 3rem 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .profile-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.2rem 1.6rem 2.2rem 1.6rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .profile-box img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      box-shadow: 0 3px 16px #23294613;
+      object-fit: cover;
+      border: 5px solid var(--accent);
+    }
+    .profile-info h2 {
+      font-family: 'Montserrat',sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .profile-info p {
+      color: #4447;
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+      line-height: 1.6;
+    }
+    .skills-list {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+    .skill {
+      background: var(--bg);
+      color: var(--primary);
+      border-radius: 1rem;
+      padding: 0.35em 1em;
+      font-size: 0.93em;
+      font-family: 'Roboto', monospace;
+      box-shadow: 0 1px 4px #0001;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .skill:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .portfolio-section-title {
+      font-family: 'Montserrat',sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.4rem 0;
+      letter-spacing: -0.5px;
+      animation: fadeInDown 1s;
+    }
+    .portfolio-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 2rem;
+      margin-bottom: 2.7rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      opacity: 0;
+      animation: fadeInUp 0.9s forwards;
+      animation-delay: 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px #23294623;
+      transform: translateY(-8px) scale(1.03);
+    }
+    .project-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: #dce2e9;
+      transition: filter 0.3s;
+      filter: brightness(0.96);
+    }
+    .project-card:hover .project-thumb {
+      filter: brightness(1.07) saturate(1.1);
+    }
+    .project-body {
+      padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+    .project-desc {
+      flex: 1;
+      color: #232946b3;
+      font-size: 1.04rem;
+      margin-bottom: 0.95rem;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+    }
+    .project-stack {
+      margin-bottom: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.7rem;
+    }
+    .stack-item {
+      background: var(--bg);
+      color: var(--primary);
+      border-radius: 0.9em;
+      font-size: 0.87em;
+      padding: 0.22em 0.9em;
+      font-family: monospace;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+    .project-links a {
+      color: var(--accent);
+      font-size: 1.03rem;
+      text-decoration: none;
+      margin-right: 1rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2em;
+      transition: color var(--transition);
+    }
+    .project-links a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .fadeUp {
+      animation: fadeInUp 1s;
+    }
+    @media (max-width: 800px) {
+      .profile-box { flex-direction: column; text-align: center; gap: 1.4rem; }
+      .profile-box img { margin-bottom: 0.4rem; }
+      .portfolio-list { gap: 1.2rem; }
+      main { padding: 0 0.5rem 2rem 0.5rem; }
+    }
+    @media (max-width: 540px) {
+      header { padding: 2.2rem 0.2rem 5.2rem 0.2rem; }
+      .profile-box { padding: 1.1rem 0.7rem; }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-32px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(32px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    /* Reveal on scroll */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>OCR-TECH</h1>
+    <p>Software Engineer</p>
+    <p>Artificial Intelligence, Machine Learning, and Computer Vision</p>
+    <div class="socials">
+      <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+        <svg width="1.3em" height="1.3em" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5C5.73 1.5 .5 6.73 .5 13a11.5 11.5 0 007.84 10.94c.59.11.81-.25.81-.56v-2.02c-3.19.69-3.86-1.54-3.86-1.54-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.55-.29-5.23-1.27-5.23-5.67 0-1.26.45-2.3 1.19-3.11-.12-.3-.52-1.51.11-3.14 0 0 .97-.31 3.18 1.19.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.21-1.5 3.18-1.19 3.18-1.19.63 1.63.23 2.84.11 3.14.74.81 1.19 1.85 1.19 3.11 0 4.41-2.68 5.38-5.23 5.67.43.37.81 1.1.81 2.21v3.28c0 .31.22.67.82.56A11.5 11.5 0 0023.5 13c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
+      </a>
+      <!-- <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+        <svg width="1.3em" height="1.3em" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76 0-.97.79-1.75 1.75-1.75s1.75.78 1.75 1.75c0 .97-.78 1.76-1.75 1.76zm15.5 10.29h-3v-4.5c0-1.08-.02-2.48-1.51-2.48-1.51 0-1.74 1.18-1.74 2.4v4.58h-3v-9h2.89v1.23h.04c.4-.77 1.37-1.59 2.83-1.59 3.03 0 3.59 1.99 3.59 4.58v5.78z"/></svg>
+      </a> -->
+      <!-- Add more socials as needed -->
+    </div>
+    <svg class="wave" viewBox="0 0 1440 80"><path fill="#f4fafd" fill-opacity="1" d="M0,32L80,26.7C160,21,320,11,480,21.3C640,32,800,64,960,74.7C1120,85,1280,75,1360,69.3L1440,64L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z"></path></svg>
+  </header>
+  <main>
+    <section class="profile-box">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile_photo"/>
+      <div class="profile-info">
+        <h2>OCR-TECH</h2>
+        <p>
+          Hi! I’m a software engineer passionate about artificial intelligence, machine learning, computer vision, and their applications.
+          I’m interested in building AI-based innovative solutions for real-world applications.
+          Let's connect if you're interested in collaborating on projects or exploring new opportunities.
+        </p>
+        <div class="skills-list">
+          <span class="skill">JavaScript</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">Tailwind</span>
+          <span class="skill">UI/UX</span>
+          <span class="skill">Figma</span>
+          <span class="skill">Accessibility</span>
+        </div>
+      </div>
+    </section>
+
+    <h3 class="portfolio-section-title">Portfolio Projects</h3>
+    <section class="portfolio-list">
+      <!-- Project Card Example -->
+      <div class="project-card hidden">
+        <img class="project-thumb" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Project 1 Thumbnail"/>
+        <div class="project-body">
+          <div class="project-title">Awesome Web App</div>
+          <div class="project-stack">
+            <span class="stack-item">React</span>
+            <span class="stack-item">Next.js</span>
+            <span class="stack-item">Node.js</span>
+          </div>
+          <div class="project-desc">
+            A modern web application that solves problem X using technology Y. Features a responsive design, seamless user experience, and lightning-fast SSR.
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/awesome-web-app" target="_blank">GitHub</a>
+            <a href="https://yourwebapp.com" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card hidden">
+        <img class="project-thumb" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Project 2 Thumbnail"/>
+        <div class="project-body">
+          <div class="project-title">Mobile Portfolio App</div>
+          <div class="project-stack">
+            <span class="stack-item">Flutter</span>
+            <span class="stack-item">Firebase</span>
+          </div>
+          <div class="project-desc">
+            An elegant mobile app built with Flutter for showcasing personal projects, complete with beautiful animations and offline support.
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/mobile-portfolio" target="_blank">GitHub</a>
+            <a href="https://play.google.com/store/apps/details?id=com.yourusername.portfolio" target="_blank">Google Play</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card hidden">
+        <img class="project-thumb" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Project 3 Thumbnail"/>
+        <div class="project-body">
+          <div class="project-title">Dashboard Redesign</div>
+          <div class="project-stack">
+            <span class="stack-item">Vue.js</span>
+            <span class="stack-item">Tailwind CSS</span>
+            <span class="stack-item">D3.js</span>
+          </div>
+          <div class="project-desc">
+            A complete UI/UX redesign of a real-time analytics dashboard. Introduced data visualizations, dark mode, and improved accessibility.
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/dashboard-redesign" target="_blank">GitHub</a>
+            <a href="https://dashboard-demo.com" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card hidden">
+        <img class="project-thumb" src="https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=600&q=80" alt="Project 4 Thumbnail"/>
+        <div class="project-body">
+          <div class="project-title">Open Source Library</div>
+          <div class="project-stack">
+            <span class="stack-item">TypeScript</span>
+            <span class="stack-item">npm</span>
+            <span class="stack-item">Jest</span>
+          </div>
+          <div class="project-desc">
+            A utility library published on npm, with 500+ weekly downloads, well-tested, and fully documented. Used by multiple open-source projects.
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/open-source-library" target="_blank">GitHub</a>
+            <a href="https://www.npmjs.com/package/your-library" target="_blank">npm</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card hidden">
+        <img class="project-thumb" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Project 5 Thumbnail"/>
+        <div class="project-body">
+          <div class="project-title">Personal Blog Platform</div>
+          <div class="project-stack">
+            <span class="stack-item">Gatsby</span>
+            <span class="stack-item">GraphQL</span>
+            <span class="stack-item">Styled Components</span>
+          </div>
+          <div class="project-desc">
+            A customizable blog platform with markdown support, theming, and fast static site generation. Features smooth page transitions and instant search.
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/personal-blog" target="_blank">GitHub</a>
+            <a href="https://yourblog.com" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+      <!-- Add more project cards as needed -->
+    </section>
+  </main>
+  <script>
+    // Reveal on scroll animation for project cards
+    function revealOnScroll() {
+      const cards = document.querySelectorAll('.project-card');
+      const windowHeight = window.innerHeight;
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < windowHeight - 60) {
+          card.classList.remove('hidden');
+          card.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+  </script>
+</body>
+</html>
