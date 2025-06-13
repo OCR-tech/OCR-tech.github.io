@@ -511,8 +511,7 @@ main {
     .container-project .p-project {font-size: 1.1rem;}
     .container-project ul {padding: 0px 0px 0px 20px;}
     .container-project ol {padding: 0px 0px 0px 20px;}
-    li {padding: 0px 20px 0px 0px;}
-
+    li {padding: 0px 0px 0px 10px;}
 }
 @media (max-width: 540px) {
     header { padding: 2.2rem 0.2rem 5.2rem 0.2rem;}
@@ -528,7 +527,7 @@ main {
     .container-project .p-project {font-size: 1rem;}
     .container-project ol {padding: 0px 0px 0px 20px;}
     .container-project ul {padding: 0px 0px 0px 20px;}
-    li {padding: 0px 20px 0px 0px;}
+    li {padding: 0px 0px 0px 0px;}
 }
 
 /* Animations */
