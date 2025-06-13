@@ -244,8 +244,6 @@ footer a {
 }
 
 
-
-
 /* CSS Variables and Global Styles */
 :root {
     --primary: #232946;
@@ -499,63 +497,6 @@ main {
 
 
 /* Responsive adjustments */
-/* @media (max-width: 768px) {
-    .project {
-        width: 100%;
-    }
-    p {
-        font-size: 15px;
-    }
-    .p-indent {
-        text-indent: 20px
-    }
-    .p-project {
-        font-size: 20px;
-    }
-    .h5-title {
-        font-size: 15px;
-    }
-    li {
-        font-size: 15px;
-        padding-left: 2px;
-        margin-left: -10px;
-    }
-    .container-text {
-        width: 100%;
-        padding: 25px;
-    }
-    .container-project {
-        width: 100%;
-        padding: 25px;
-    }
-    .column-project {
-        width: 100%;
-    }
-    header {
-        background: #ffffff;
-        color: white;
-        padding: 5px 0;
-        font-family: 'arial black', sans-serif;
-        font-size: 8.5px;
-        text-transform: uppercase;
-        text-align: center;
-    }
-    .button-round {
-        max-width: 100px;
-    }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-    .project {
-        width: 100%;
-    }
-}
-@media (min-width: 1025px) {
-    .project {
-        width: 100%;
-    }
-} */
-
-
 @media (max-width: 800px) {
     .profile-box { flex-direction: column; text-align: center; gap: 1.4rem; }
     .profile-box img { margin-bottom: 0.4rem; }
@@ -568,6 +509,9 @@ main {
     .project-desc { font-size: 0.9rem; }
     .container-project { width: 95%; padding: 25px; margin-top: 10px; font-size: 1rem;}
     .container-project .p-project {font-size: 1rem;}
+    .container-project ul {padding: 0px 0px 0px 20px;}
+    li {padding: 0px 10px 0px 0px;}
+
 }
 @media (max-width: 540px) {
     header { padding: 2.2rem 0.2rem 5.2rem 0.2rem;}
@@ -579,8 +523,10 @@ main {
     .profile-info p { font-size: 1rem; }
     .skills-list .skill { font-size: 0.8rem; }
     .project-desc { font-size: 0.9rem; }
-    .container-project { width: 98%; padding: 15px; margin-top: 5px; font-size: 0.9rem;}
+    .container-project { width: 95%; padding: 15px; margin-top: 5px; font-size: 0.9rem;}
     .container-project .p-project {font-size: 1rem;}
+    .container-project ul {padding: 0px 0px 0px 20px;}
+    li {padding: 0px 5px 0px 0px;}
 }
 
 /* Animations */
